@@ -2,6 +2,8 @@ const express = require("express");
 const http = require("http");
 const { Server } = require("socket.io");
 const cors = require("cors");
+const dotenv = require("dotenv").config();
+const path = require("path");
 
 const app = express();
 const server = http.createServer(app);
@@ -33,8 +35,13 @@ io.on("connection", (socket) => {
   });
 });
 
-app.get("*", (req, res) => {
-  return res.json("hello World");
-});
+if (process.env.NODE_ENV == "production") {
+  const publicPath = path.resolve(__dirname, ".", "build");
+  const filePath = path.join(__dirname, ".", "build", "index.html");
+
+  app.get("*", (req, res) => {
+    return res.sendFile(filePath);
+  });
+}
 
 server.listen(5000, () => console.log("server started"));
