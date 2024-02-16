@@ -21,6 +21,7 @@ const io = new Server(server, {
 });
 
 let messages = [];
+
 io.on("connection", (socket) => {
   io.emit("receive_message", messages);
 
