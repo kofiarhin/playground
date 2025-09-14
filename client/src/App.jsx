@@ -15,7 +15,7 @@ const App = () => {
   }, []);
   return (
     <div id="app">
-      <h1 className="heading center">FullStack Template</h1>
+      <h1 className="heading center">Playground</h1>
     </div>
   );
 };
