@@ -1,12 +1,11 @@
-import { useContent } from '../../context/ContentContext';
+import { useSelector } from '../../lib/reactRedux.js';
+import { selectContactContent } from '../../store/slices/contentSlice.js';
 import ContactDetails from '../../components/ContactDetails/ContactDetails';
 import ContactForm from '../../components/ContactForm/ContactForm';
 import styles from './contact.styles.scss?module';
 
 const Contact = () => {
-  const {
-    contact: { intro, details },
-  } = useContent();
+  const { intro, details } = useSelector(selectContactContent);
 
   return (
     <div className={styles.contact}>

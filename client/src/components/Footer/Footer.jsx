@@ -1,11 +1,10 @@
-import { useContent } from '../../context/ContentContext';
+import { useSelector } from '../../lib/reactRedux.js';
+import { selectContactContent, selectMeta } from '../../store/slices/contentSlice.js';
 import styles from './footer.styles.scss?module';
 
 const Footer = () => {
-  const {
-    meta,
-    contact: { details },
-  } = useContent();
+  const meta = useSelector(selectMeta);
+  const { details } = useSelector(selectContactContent);
 
   return (
     <footer className={styles.footer}>

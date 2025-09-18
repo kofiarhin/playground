@@ -1,12 +1,11 @@
-import { useContent } from '../../context/ContentContext';
+import { useSelector } from '../../lib/reactRedux.js';
+import { selectHomeContent } from '../../store/slices/contentSlice.js';
 import VideoBanner from '../../components/VideoBanner/VideoBanner';
 import Highlights from '../../components/Highlights/Highlights';
 import styles from './home.styles.scss?module';
 
 const Home = () => {
-  const {
-    home: { hero, highlights, testimonials },
-  } = useContent();
+  const { hero, highlights, testimonials } = useSelector(selectHomeContent);
 
   return (
     <div className={styles.home}>
