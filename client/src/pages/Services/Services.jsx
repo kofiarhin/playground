@@ -1,11 +1,10 @@
-import { useContent } from '../../context/ContentContext';
+import { useSelector } from '../../lib/reactRedux.js';
+import { selectServicesContent } from '../../store/slices/contentSlice.js';
 import ServiceCard from '../../components/ServiceCard/ServiceCard';
 import styles from './services.styles.scss?module';
 
 const Services = () => {
-  const {
-    services: { intro, list },
-  } = useContent();
+  const { intro, list } = useSelector(selectServicesContent);
 
   return (
     <section className={styles.services}>

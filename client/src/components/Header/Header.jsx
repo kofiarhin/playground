@@ -1,10 +1,11 @@
 import { NavLink } from 'react-router-dom';
-import { useContent } from '../../context/ContentContext';
+import { useSelector } from '../../lib/reactRedux.js';
+import { selectMeta, selectNavigation } from '../../store/slices/contentSlice.js';
 import styles from './header.styles.scss?module';
 
 const Header = () => {
-  const content = useContent();
-  const { navigation, meta } = content;
+  const navigation = useSelector(selectNavigation);
+  const meta = useSelector(selectMeta);
 
   return (
     <header className={styles.header}>

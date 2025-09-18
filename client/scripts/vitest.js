@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/* eslint-env node */
 import fs from 'fs';
 import path from 'path';
 import url from 'url';
@@ -73,7 +74,6 @@ const loadTests = async () => {
     .map((file) => path.join(testsRoot, file));
 
   for (const file of files) {
-    // eslint-disable-next-line no-await-in-loop
     await import(url.pathToFileURL(file));
   }
 };
@@ -90,7 +90,6 @@ const run = async () => {
     console.log(`\nSuite: ${suite.name}`);
     for (const testCase of suite.tests) {
       try {
-        // eslint-disable-next-line no-await-in-loop
         await testCase.fn();
         passed += 1;
         console.log(`  ✓ ${testCase.name}`);

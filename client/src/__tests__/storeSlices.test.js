@@ -1,3 +1,5 @@
+/* eslint-env jest */
+
 import store from '../store/index.js';
 import { openGalleryModal, closeGalleryModal } from '../store/slices/uiSlice.js';
 import { setGuestProfile, clearGuestProfile } from '../store/slices/authSlice.js';

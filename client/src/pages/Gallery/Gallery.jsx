@@ -1,12 +1,11 @@
-import { useContent } from '../../context/ContentContext';
+import { useSelector } from '../../lib/reactRedux.js';
+import { selectGalleryContent } from '../../store/slices/contentSlice.js';
 import GalleryGrid from '../../components/GalleryGrid/GalleryGrid';
 import GalleryModal from '../../components/GalleryModal/GalleryModal';
 import styles from './gallery.styles.scss?module';
 
 const Gallery = () => {
-  const {
-    gallery: { intro, items },
-  } = useContent();
+  const { intro, items } = useSelector(selectGalleryContent);
 
   return (
     <section className={styles.gallery}>
