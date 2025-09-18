@@ -1,7 +1,28 @@
-import "./footer.styles.scss";
+import { useContent } from '../../context/ContentContext';
+import styles from './footer.styles.scss?module';
 
 const Footer = () => {
-  return <div id="footer"> Created by Kofi Arhin</div>;
+  const {
+    meta,
+    contact: { details },
+  } = useContent();
+
+  return (
+    <footer className={styles.footer}>
+      <div>
+        <p className={styles.brand}>{meta.brand}</p>
+        <p className={styles.tagline}>{meta.tagline}</p>
+      </div>
+      <div className={styles.details}>
+        <span>{details.address}</span>
+        <span>{details.phone}</span>
+        <span>{details.email}</span>
+      </div>
+      <p className={styles.copy}>
+        © {new Date().getFullYear()} {meta.brand}. Crafted for indulgent escapes.
+      </p>
+    </footer>
+  );
 };
 
 export default Footer;

@@ -1,26 +1,26 @@
-const express = require("express");
-const app = express();
-const dotenv = require("dotenv").config();
-const cors = require("cors");
+const express = require('express');
+const cors = require('cors');
+const contentRoutes = require('./routes/contentRoutes');
+const inquiryRoutes = require('./routes/inquiryRoutes');
+const { notFoundHandler, errorHandler } = require('./middleware/errorMiddleware');
 
-// setupt middlewares
-app.use(
-  cors({
-    origin: "*",
-  })
-);
-app.use(express.json());
+const createApp = () => {
+  const app = express();
 
-app.get("/", async (req, res, next) => {
-  return res.json({ message: "hello world" });
-});
+  app.use(cors({ origin: '*', credentials: false }));
+  app.use(express.json());
 
-app.get("/api/health", async (req, res, next) => {
-  return res.json({ message: "server is working" });
-});
+  app.get('/health', (req, res) => {
+    res.status(200).json({ status: 'ok' });
+  });
 
-app.post("/api/health", async (req, res, next) => {
-  return res.json({ message: "server is working" });
-});
+  app.use('/api/content', contentRoutes);
+  app.use('/api/inquiries', inquiryRoutes);
 
-module.exports = app;
+  app.use(notFoundHandler);
+  app.use(errorHandler);
+
+  return app;
+};
+
+module.exports = createApp;

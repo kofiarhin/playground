@@ -1,22 +1,36 @@
-import { useEffect } from "react";
-import "./app.styles.scss";
-import { BASE_URL } from "./constants/constants";
+import { Navigate, Route, Routes } from 'react-router-dom';
+import Layout from './components/Layout/Layout';
+import StatusScreen from './components/StatusScreen/StatusScreen';
+import Home from './pages/Home/Home';
+import Services from './pages/Services/Services';
+import Gallery from './pages/Gallery/Gallery';
+import Contact from './pages/Contact/Contact';
+import useSalonContent from './hooks/useSalonContent';
+import { ContentProvider } from './context/ContentContext';
 
 const App = () => {
-  useEffect(() => {
-    const getData = async () => {
-      const res = await fetch(BASE_URL);
-      if (res.ok) {
-        console.log("connected to server: ", BASE_URL);
-      }
-    };
+  const { data, isLoading, isError, error } = useSalonContent();
 
-    getData();
-  }, []);
+  if (isLoading) {
+    return <StatusScreen message="Preparing your LuxeAura experience..." />;
+  }
+
+  if (isError) {
+    return <StatusScreen message={error?.message || 'Unable to load experience.'} variant="error" />;
+  }
+
   return (
-    <div id="app">
-      <h1 className="heading center">Playground</h1>
-    </div>
+    <ContentProvider content={data}>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </Layout>
+    </ContentProvider>
   );
 };
 

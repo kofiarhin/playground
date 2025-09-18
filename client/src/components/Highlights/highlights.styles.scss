@@ -1,0 +1,26 @@
+.highlights {
+  display: grid;
+  gap: 2rem;
+  padding: 4rem 6vw;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.highlight {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 18px;
+  padding: 1.5rem;
+  box-shadow: 0 18px 35px rgba(15, 15, 16, 0.08);
+  border: 1px solid rgba(15, 15, 16, 0.05);
+}
+
+.title {
+  margin: 0 0 0.75rem 0;
+  font-size: 1.15rem;
+  letter-spacing: 0.04em;
+}
+
+.description {
+  margin: 0;
+  color: rgba(15, 15, 16, 0.75);
+  line-height: 1.6;
+}

@@ -1,0 +1,48 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 15, 16, 0.75);
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+  z-index: 20;
+}
+
+.modal {
+  position: relative;
+  max-width: 960px;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 1.5rem;
+  box-shadow: 0 35px 70px rgba(0, 0, 0, 0.3);
+  display: grid;
+  gap: 1rem;
+}
+
+.close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  border: none;
+  background: rgba(255, 255, 255, 0.85);
+  color: #0f0f10;
+  font-size: 1.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.image {
+  width: 100%;
+  border-radius: 16px;
+  max-height: 60vh;
+  object-fit: cover;
+}
+
+.caption {
+  margin: 0;
+  font-size: 1rem;
+  color: rgba(15, 15, 16, 0.75);
+}

@@ -1,0 +1,117 @@
+{
+  "meta": {
+    "brand": "LuxeAura Salon",
+    "tagline": "Where timeless beauty meets modern indulgence"
+  },
+  "navigation": [
+    { "label": "Home", "path": "/" },
+    { "label": "Services", "path": "/services" },
+    { "label": "Gallery", "path": "/gallery" },
+    { "label": "Contact", "path": "/contact" }
+  ],
+  "home": {
+    "hero": {
+      "headline": "Elevate Your Radiance",
+      "subheadline": "Experience couture hair artistry, bespoke treatments, and unparalleled serenity.",
+      "ctaText": "Reserve Your Escape",
+      "ctaTarget": "/contact",
+      "videoUrl": "https://cdn.coverr.co/videos/coverr-a-makeup-artist-at-work-8369/1080p.mp4"
+    },
+    "highlights": [
+      {
+        "title": "Couture Styling",
+        "description": "Master stylists crafting signature looks tailored to your lifestyle."
+      },
+      {
+        "title": "Spa Sanctuaries",
+        "description": "Private treatment suites infused with aromatherapy and ambient soundscapes."
+      },
+      {
+        "title": "Clean Beauty Rituals",
+        "description": "Award-winning products, sustainably sourced and clinically proven."
+      }
+    ],
+    "testimonials": [
+      {
+        "quote": "Every visit feels like a five-star escape—my hair has never looked more luminous.",
+        "guest": "Amelia Hart"
+      },
+      {
+        "quote": "The LuxeAura team anticipates my needs before I even arrive.",
+        "guest": "Julian Rivera"
+      }
+    ]
+  },
+  "services": {
+    "intro": "Discover signature services curated for discerning guests, each beginning with an in-depth consultation.",
+    "list": [
+      {
+        "name": "LuxeAura Signature Blowout",
+        "description": "Precision cleanse, scalp massage, and heat-styled finish tailored to your desired movement.",
+        "price": "$145",
+        "duration": "75 mins"
+      },
+      {
+        "name": "Golden Hour Balayage",
+        "description": "Hand-painted luminosity with bond-strengthening gloss and custom toning.",
+        "price": "$320",
+        "duration": "3 hrs"
+      },
+      {
+        "name": "Regal Renewal Facial",
+        "description": "Bioactive infusion, sculpting massage, and LED therapy for runway-ready radiance.",
+        "price": "$210",
+        "duration": "90 mins"
+      },
+      {
+        "name": "Signature Grooming Experience",
+        "description": "Tailored cut, express facial, and aromatherapeutic hot towel finish for modern gentlemen.",
+        "price": "$165",
+        "duration": "70 mins"
+      }
+    ]
+  },
+  "gallery": {
+    "intro": "Step inside our world of polished sophistication and curated artistry.",
+    "items": [
+      {
+        "id": "style-suite",
+        "imageUrl": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=80",
+        "alt": "Luxurious salon styling suite with gold accents",
+        "caption": "Private styling suite bathed in warm light."
+      },
+      {
+        "id": "treatment-suite",
+        "imageUrl": "https://images.unsplash.com/photo-1525286116112-b59af11adad1?auto=format&fit=crop&w=1200&q=80",
+        "alt": "Spa treatment room with plush bedding and soft lighting",
+        "caption": "Spa sanctuary prepared for rejuvenating rituals."
+      },
+      {
+        "id": "product-wall",
+        "imageUrl": "https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1200&q=80",
+        "alt": "Display wall of luxury beauty products",
+        "caption": "Curated apothecary of clean, high-performance formulas."
+      },
+      {
+        "id": "lobby",
+        "imageUrl": "https://images.unsplash.com/photo-1522661067900-ab829854a57f?auto=format&fit=crop&w=1200&q=80",
+        "alt": "Salon lobby with velvet seating and chandelier",
+        "caption": "Lobby lounge designed for unhurried arrivals."
+      }
+    ]
+  },
+  "contact": {
+    "intro": "Reserve a private consultation or request our concierge team to curate your visit.",
+    "details": {
+      "address": "18 Aurelia Avenue, Penthouse Level, Manhattan, NY",
+      "phone": "+1 (212) 555-0199",
+      "email": "concierge@luxeaura.com",
+      "hours": [
+        "Mon – Thu: 9:00 AM – 7:00 PM",
+        "Fri: 9:00 AM – 8:00 PM",
+        "Sat: 10:00 AM – 6:00 PM",
+        "Sun: By private appointment"
+      ]
+    }
+  }
+}
