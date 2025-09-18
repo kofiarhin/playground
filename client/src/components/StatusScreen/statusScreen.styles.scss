@@ -1,0 +1,25 @@
+.wrapper {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at top, #f0e9ff, #ffffff 60%);
+  padding: 3rem;
+}
+
+.info,
+.error {
+  padding: 1.5rem 2rem;
+  border-radius: 20px;
+  font-size: 1.1rem;
+  box-shadow: 0 20px 40px rgba(15, 15, 16, 0.12);
+}
+
+.info {
+  background: #ffffff;
+  color: #0f0f10;
+}
+
+.error {
+  background: #ffeded;
+  color: #a11313;
+}

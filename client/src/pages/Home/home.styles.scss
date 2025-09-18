@@ -1,0 +1,37 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.testimonials {
+  padding: 4rem 6vw 6rem;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  background: linear-gradient(180deg, #ffffff 0%, #f3ecff 100%);
+}
+
+.testimonial {
+  margin: 0;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 20px 45px rgba(142, 111, 255, 0.1);
+  display: grid;
+  gap: 1rem;
+  color: rgba(15, 15, 16, 0.8);
+}
+
+.testimonial blockquote {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.testimonial figcaption {
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(15, 15, 16, 0.55);
+}

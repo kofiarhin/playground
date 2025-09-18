@@ -1,0 +1,77 @@
+.form {
+  display: grid;
+  gap: 1.5rem;
+  padding: 4rem 6vw;
+  background: #ffffff;
+  border-radius: 28px;
+  margin: 0 4vw 4rem;
+  box-shadow: 0 25px 50px rgba(15, 15, 16, 0.12);
+}
+
+.heading {
+  margin: 0;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.field {
+  display: grid;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.field input,
+.field textarea {
+  padding: 0.85rem 1rem;
+  border-radius: 14px;
+  border: 1px solid rgba(15, 15, 16, 0.12);
+  font-size: 1rem;
+  background: #f9f9fb;
+}
+
+.checkbox {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  font-size: 0.9rem;
+  color: rgba(15, 15, 16, 0.7);
+}
+
+.checkbox input {
+  margin-top: 0.3rem;
+}
+
+.submit {
+  align-self: start;
+  padding: 0.9rem 2.5rem;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(135deg, #8e6fff, #c3a7ff);
+  color: #0f0f10;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+}
+
+.submit:disabled {
+  opacity: 0.7;
+  cursor: progress;
+}
+
+.success {
+  color: #1e7f3b;
+  margin: 0;
+}
+
+.error {
+  color: #a11313;
+  margin: 0;
+}
