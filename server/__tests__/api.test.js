@@ -26,7 +26,7 @@ jest.mock('../models/Inquiry', () => ({
 }));
 
 const createApp = require('../app');
-const connectDb = require('../config/db');
+const { connectDb, disconnectDb } = require('../config/db');
 const Inquiry = require('../models/Inquiry');
 
 let app;
@@ -45,7 +45,7 @@ describe('LuxeAura Salon API', () => {
   });
 
   afterAll(async () => {
-    await mongoose.connection.close();
+    await disconnectDb();
     if (mongoServer) {
       await mongoServer.stop();
     }

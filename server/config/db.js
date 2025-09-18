@@ -1,17 +1,47 @@
 const mongoose = require('mongoose');
 
+let memoryServer;
+
 const connectDb = async (uri) => {
-  if (!uri) {
-    throw new Error('MongoDB connection string missing. Set MONGO_URI in environment variables.');
+  let connectionUri = uri;
+
+  if (!connectionUri) {
+    if (process.env.NODE_ENV === 'production') {
+      throw new Error('MongoDB connection string missing. Set MONGO_URI in environment variables.');
+    }
+
+    let MongoMemoryServer;
+    try {
+      ({ MongoMemoryServer } = require('mongodb-memory-server'));
+    } catch (error) {
+      throw new Error(
+        'MongoDB connection string missing and mongodb-memory-server is not available. Install it or set MONGO_URI.'
+      );
+    }
+
+    memoryServer = await MongoMemoryServer.create();
+    connectionUri = memoryServer.getUri();
   }
 
-  if (uri.startsWith('memory://')) {
+  if (connectionUri.startsWith('memory://')) {
     return;
   }
 
-  await mongoose.connect(uri, {
+  await mongoose.connect(connectionUri, {
     serverSelectionTimeoutMS: 5000,
   });
 };
 
-module.exports = connectDb;
+const disconnectDb = async () => {
+  await mongoose.connection.close();
+
+  if (memoryServer) {
+    await memoryServer.stop();
+    memoryServer = null;
+  }
+};
+
+module.exports = {
+  connectDb,
+  disconnectDb,
+};

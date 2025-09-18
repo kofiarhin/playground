@@ -1,16 +1,18 @@
 const http = require('http');
 const path = require('path');
 const dotenv = require('dotenv');
-const connectDb = require('./config/db');
+const { connectDb } = require('./config/db');
 const createApp = require('./app');
 
 dotenv.config({ path: path.join(__dirname, '.env') });
 
 const port = process.env.PORT || 4000;
+const mongoUri =
+  process.env.MONGO_URI || process.env.MONGODB_URI || process.env.DATABASE_URL;
 
 const startServer = async () => {
   try {
-    await connectDb(process.env.MONGO_URI);
+    await connectDb(mongoUri);
     const app = createApp();
     const server = http.createServer(app);
 
