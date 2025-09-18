@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "start": "npm run server",
     "client": "npm run dev --prefix client",
     "client:test": "npm run test --prefix client",
     "server": "node server/server.js",
