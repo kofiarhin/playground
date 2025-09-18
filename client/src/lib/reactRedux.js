@@ -1,11 +1,10 @@
-import { createContext, useContext, useMemo } from 'react';
-import { useSyncExternalStore } from 'react';
+import { createContext, createElement, useContext, useMemo, useSyncExternalStore } from 'react';
 
 const StoreContext = createContext(null);
 
 export const Provider = ({ store, children }) => {
   const value = useMemo(() => store, [store]);
-  return <StoreContext.Provider value={value}>{children}</StoreContext.Provider>;
+  return createElement(StoreContext.Provider, { value }, children);
 };
 
 export const useDispatch = () => {
