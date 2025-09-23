@@ -1,48 +1,99 @@
-import { useEffect } from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
-import Layout from './components/Layout/Layout';
-import StatusScreen from './components/StatusScreen/StatusScreen';
-import Home from './pages/Home/Home';
-import Services from './pages/Services/Services';
-import Gallery from './pages/Gallery/Gallery';
-import Contact from './pages/Contact/Contact';
-import useSalonContent from './hooks/useSalonContent';
-import { useDispatch, useSelector } from './lib/reactRedux.js';
-import { selectContent, setContent } from './store/slices/contentSlice.js';
+import { Routes, Route } from 'react-router-dom';
+import Header from './components/Header';
+import CartDrawer from './components/CartDrawer';
+import Home from './pages/Home';
+import RestaurantList from './pages/RestaurantList';
+import RestaurantDetail from './pages/RestaurantDetail';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import OwnerDashboard from './pages/Dashboard/OwnerDashboard';
+import MenuList from './pages/Dashboard/MenuList';
+import MenuEdit from './pages/Dashboard/MenuEdit';
+import Orders from './pages/Dashboard/Orders';
+import Cart from './pages/Cart';
+import Checkout from './pages/Checkout';
+import OrderDetail from './pages/OrderDetail';
+import ProtectedRoute from './components/ProtectedRoute';
 
 const App = () => {
-  const { data, isLoading, isError, error } = useSalonContent();
-  const dispatch = useDispatch();
-  const content = useSelector(selectContent);
-
-  useEffect(() => {
-    if (data) {
-      dispatch(setContent(data));
-    }
-  }, [data, dispatch]);
-
-  if (isLoading) {
-    return <StatusScreen message="Preparing your LuxeAura experience..." />;
-  }
-
-  if (isError) {
-    return <StatusScreen message={error?.message || 'Unable to load experience.'} variant="error" />;
-  }
-
-  if (!content) {
-    return <StatusScreen message="Preparing your LuxeAura experience..." />;
-  }
-
   return (
-    <Layout>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/gallery" element={<Gallery />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
-    </Layout>
+    <>
+      <Header />
+      <CartDrawer />
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/restaurants" element={<RestaurantList />} />
+          <Route path="/restaurants/:restaurantId" element={<RestaurantDetail />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <OwnerDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/dashboard/restaurants/:restaurantId/menu"
+            element={
+              <ProtectedRoute>
+                <MenuList />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/dashboard/restaurants/:restaurantId/menu/:itemId"
+            element={
+              <ProtectedRoute>
+                <MenuEdit />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/dashboard/orders"
+            element={
+              <ProtectedRoute>
+                <Orders />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/cart"
+            element={
+              <ProtectedRoute>
+                <Cart />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/checkout"
+            element={
+              <ProtectedRoute>
+                <Checkout />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/orders/:orderId"
+            element={
+              <ProtectedRoute>
+                <OrderDetail />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/orders"
+            element={
+              <ProtectedRoute>
+                <Orders />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </main>
+    </>
   );
 };
 

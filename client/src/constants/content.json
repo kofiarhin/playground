@@ -1,0 +1,29 @@
+{
+  "home": {
+    "headline": "Discover food delivery made simple",
+    "cta": "Browse restaurants"
+  },
+  "login": {
+    "headline": "Sign in to track your orders",
+    "cta": "Login"
+  },
+  "register": {
+    "headline": "Create an account to start ordering",
+    "cta": "Register"
+  },
+  "restaurantList": {
+    "headline": "Popular restaurants nearby"
+  },
+  "dashboard": {
+    "headline": "Owner dashboard overview"
+  },
+  "cart": {
+    "headline": "Your cart summary"
+  },
+  "checkout": {
+    "headline": "Complete your order"
+  },
+  "orders": {
+    "headline": "Your recent orders"
+  }
+}

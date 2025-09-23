@@ -1,34 +1,43 @@
-const http = require('http');
-const path = require('path');
+const express = require('express');
+const cors = require('cors');
+const cookieParser = require('cookie-parser');
 const dotenv = require('dotenv');
-const { connectDb } = require('./config/db');
-const createApp = require('./app');
+const { connectDB } = require('./config/db');
+const errorHandler = require('./middleware/error');
 
-dotenv.config({ path: path.join(__dirname, '.env') });
+dotenv.config();
 
-const port = process.env.PORT || 4000;
-const mongoUri =
-  process.env.MONGO_URI || process.env.MONGODB_URI || process.env.DATABASE_URL;
+const app = express();
 
-const startServer = async () => {
-  try {
-    await connectDb(mongoUri);
-    const app = createApp();
-    const server = http.createServer(app);
+app.use(cors({ origin: '*', credentials: true }));
+app.use(express.json());
+app.use(cookieParser());
 
-    server.listen(port, () => {
-      // eslint-disable-next-line no-console
-      console.log(`LuxeAura Salon API running on port ${port}`);
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'ok' });
+});
+
+app.use('/api/auth', require('./routes/authRoutes'));
+app.use('/api/restaurants', require('./routes/restaurantRoutes'));
+app.use('/api/cart', require('./routes/cartRoutes'));
+app.use('/api/orders', require('./routes/orderRoutes'));
+app.use('/api/delivery', require('./routes/deliveryRoutes'));
+
+app.use(errorHandler);
+
+const PORT = process.env.PORT || 5000;
+
+if (process.env.NODE_ENV !== 'test') {
+  connectDB()
+    .then(() => {
+      app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`);
+      });
+    })
+    .catch((error) => {
+      console.error('Mongo connection error', error);
+      process.exit(1);
     });
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error('Failed to start server', error);
-    process.exit(1);
-  }
-};
-
-if (require.main === module) {
-  startServer();
 }
 
-module.exports = startServer;
+module.exports = app;

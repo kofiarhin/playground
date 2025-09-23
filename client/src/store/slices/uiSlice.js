@@ -1,25 +1,29 @@
-import { createSlice } from '../../lib/reduxToolkit.js';
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  galleryModalOpen: false,
-  selectedMedia: null,
+  cartDrawerOpen: false,
+  theme: 'light',
+  notification: null
 };
 
 const uiSlice = createSlice({
   name: 'ui',
   initialState,
   reducers: {
-    openGalleryModal: (state, action) => {
-      state.galleryModalOpen = true;
-      state.selectedMedia = action.payload;
+    toggleCartDrawer: (state) => {
+      state.cartDrawerOpen = !state.cartDrawerOpen;
     },
-    closeGalleryModal: (state) => {
-      state.galleryModalOpen = false;
-      state.selectedMedia = null;
+    setTheme: (state, action) => {
+      state.theme = action.payload;
     },
-  },
+    showNotification: (state, action) => {
+      state.notification = action.payload;
+    },
+    clearNotification: (state) => {
+      state.notification = null;
+    }
+  }
 });
 
-export const { openGalleryModal, closeGalleryModal } = uiSlice.actions;
-
+export const { toggleCartDrawer, setTheme, showNotification, clearNotification } = uiSlice.actions;
 export default uiSlice.reducer;

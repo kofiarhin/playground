@@ -1,0 +1,41 @@
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 320px;
+  height: 100vh;
+  background: #f8fafc;
+  box-shadow: -2px 0 8px rgba(15, 23, 42, 0.2);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.checkoutButton {
+  padding: 0.75rem;
+  border: none;
+  background: #16a34a;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
