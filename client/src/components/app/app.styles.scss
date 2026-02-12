@@ -1,0 +1,41 @@
+.app-container {
+  min-height: 100vh;
+  padding: 2rem 1.5rem;
+  background-color: #f8f8fb;
+  color: #1a1a1a;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.app-title {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.app-main {
+  max-width: 640px;
+}
+
+.app-text {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.app-button {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .app-container {
+    padding: 3rem 4rem;
+  }
+}

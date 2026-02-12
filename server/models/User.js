@@ -1,21 +1,30 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
-const { ROLES } = require('../utils/roles');
 
 const userSchema = new mongoose.Schema(
   {
-    name: { type: String, required: true },
-    email: { type: String, required: true, unique: true, lowercase: true },
-    password: { type: String, required: true },
-    role: { type: String, enum: Object.values(ROLES), default: ROLES.CUSTOMER }
+    clerkId: {
+      type: String,
+      required: true,
+      unique: true,
+      index: true
+    },
+    email: {
+      type: String,
+      required: true
+    },
+    name: {
+      type: String,
+      required: true
+    },
+    role: {
+      type: String,
+      enum: ['user', 'admin'],
+      default: 'user'
+    }
   },
-  { timestamps: true }
+  {
+    timestamps: true
+  }
 );
 
-userSchema.methods.comparePassword = async function comparePassword(candidate) {
-  return bcrypt.compare(candidate, this.password);
-};
-
-const User = mongoose.model('User', userSchema);
-
-module.exports = User;
+module.exports = mongoose.model('User', userSchema);
