@@ -1,13 +1,9 @@
 const express = require('express');
-const { register, login, profile } = require('../controllers/authController');
-const auth = require('../middleware/auth');
-const validate = require('../middleware/validate');
-const { registerSchema, loginSchema } = require('../validators/auth.validation');
+const { requireAuth } = require('@clerk/express');
+const { syncUser } = require('../controllers/authController');
 
 const router = express.Router();
 
-router.post('/register', validate(registerSchema), register);
-router.post('/login', validate(loginSchema), login);
-router.get('/me', auth(), profile);
+router.post('/sync', requireAuth(), syncUser);
 
 module.exports = router;

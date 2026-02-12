@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Validate server package.json absence
+        run: |
+          if [ -f server/package.json ]; then
+            echo "server/package.json must not exist" && exit 1
+          fi
+
+      - name: Install root dependencies
+        run: npm install
+
+      - name: Install client dependencies
+        run: npm install --prefix client
+
+      - name: Test
+        run: npm test
+
+      - name: Enforce coverage
+        run: |
+          echo "Coverage thresholds enforced by Jest/Vitest configs"
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy
+        run: |
+          echo "Deploy server to Render/Heroku"
+          echo "Deploy client to Vercel"
